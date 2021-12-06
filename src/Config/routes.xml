@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<routes>
+    <route path="/" action="error404" controller="ErrorController"/>
+    <route path="testing" action="login" controller="LoginController"/>
+    <!-- <route path="show" action="show" controller="PostController" params="id"/>
+    <route path="author" action="author" controller="PostController"/> -->
+</routes>
