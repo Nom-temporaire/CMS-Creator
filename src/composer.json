@@ -1,0 +1,15 @@
+{
+    "name": "cms/app",
+    "autoload": {
+        "psr-4": {
+            "App\\": "."
+        }
+    },
+    "authors": [
+        {
+            "name": "ADR1811",
+            "email": "adrialb95@gmail.com"
+        }
+    ],
+    "require": {}
+}
