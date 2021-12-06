@@ -1,7 +1,0 @@
-.DS_Store
-database/ib_logfile0
-/vendor/
-database/aria_log_control
-database/ddl_recovery-backup.log
-database/aria_log.00000001
-database/ddl_recovery.log

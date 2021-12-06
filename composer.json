@@ -1,9 +1,0 @@
-{
-    "name": "cms/cms-creator",
-    "autoload": {
-        "psr-4": {
-            "Cms\\CmsCreator\\": "src/"
-        }
-    },
-    "require": {}
-}
