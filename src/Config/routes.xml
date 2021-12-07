@@ -2,7 +2,8 @@
 
 <routes>
     <route path="/" action="error404" controller="ErrorController"/>
-    <route path="testing" action="login" controller="LoginController"/>
+    <route path="signin" action="login" controller="LoginController"/>
+    <route path="signup" action="SignUp" controller="SignupController"/>
     <!-- <route path="show" action="show" controller="PostController" params="id"/>
     <route path="author" action="author" controller="PostController"/> -->
 </routes>
