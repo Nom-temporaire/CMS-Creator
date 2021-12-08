@@ -12,6 +12,7 @@ if (empty($_SESSION)) {
     } elseif ($_SESSION['role'] == 'admin') {
         // si le role est admin, on va afficher la page admin
         // header('Location: index');
+
     }
 }
 ?>
