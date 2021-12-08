@@ -1,5 +1,14 @@
+<?php
+// on va verifier si $_SESSION est vide ou non
+if (empty($_SESSION)) {
+    var_dump('session vide');
+} else {
+    var_dump('session pas vide');
+}
+?>
+
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">

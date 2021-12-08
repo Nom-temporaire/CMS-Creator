@@ -6,6 +6,6 @@
     <route path="signup" action="SignUp" controller="SignupController"/>
     <route path="list" action="list" controller="ListController"/>
     <route path="post" action="post" controller="PostController" params="id"/>
-    <!-- <route path="show" action="show" controller="PostController" params="id"/>
-    <route path="author" action="author" controller="PostController"/> -->
+    <route path="create" action="create" controller="CreateController"/>
+    
 </routes>
