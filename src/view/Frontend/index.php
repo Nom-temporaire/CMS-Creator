@@ -1,0 +1,1 @@
+<h1>Tu es à l'index</h1>
