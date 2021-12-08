@@ -1,9 +1,15 @@
 <?php
 // on va verifier si $_SESSION est vide ou non
 if (empty($_SESSION)) {
-    var_dump('session vide');
+    // start a session
+    session_start();
+    $_SESSION['role'] = 'visiteur';
+    var_dump($_SESSION['role']);
 } else {
-    var_dump('session pas vide');
+    // verifier si le role dans session est visiteur
+    if ($_SESSION['role'] == 'visiteur') {
+        var_dump($_SESSION['role']);
+    }
 }
 ?>
 
