@@ -8,5 +8,7 @@
     <route path="post" action="post" controller="PostController" params="id"/>
     <route path="create" action="create" controller="CreateController"/>
     <route path="log" action="log" controller="LogController"/>
+    <!-- Si aucune des routes s'affiche alors on redirige vers / -->
+    <route path="*" action="index" controller="IndexController"/>
     
 </routes>

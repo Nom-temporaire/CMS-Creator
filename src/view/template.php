@@ -4,11 +4,14 @@ if (empty($_SESSION)) {
     // start a session
     session_start();
     $_SESSION['role'] = 'visiteur';
-    var_dump($_SESSION['role']);
+    // header('Location: index');
 } else {
     // verifier si le role dans session est visiteur
     if ($_SESSION['role'] == 'visiteur') {
-        var_dump($_SESSION['role']);
+        // header('Location: index');
+    } elseif ($_SESSION['role'] == 'admin') {
+        // si le role est admin, on va afficher la page admin
+        // header('Location: index');
     }
 }
 ?>
