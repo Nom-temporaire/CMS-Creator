@@ -32,7 +32,8 @@ class UserManager extends BaseManager
         $log = $req->fetch();
         //si log est vide alors on peut ajouter l'utilisateur
         if (empty($log)) {
-            $requete->execute();
+            // $requete->bindValue();
+            $requete->execute($data);
             $l = $req->fetch();
         }
     }
