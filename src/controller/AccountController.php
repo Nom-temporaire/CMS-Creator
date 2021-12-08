@@ -4,14 +4,15 @@ namespace App\Controller;
 
 class AccountController extends BaseController
 {
-    public function executeCreate($id)
+    public function executeCreate()
     {
-        $this->render(
-            'Account.php',
-            [
-                'idUser' => $id
-            ],
-            'Account'
-        );
+        $id =
+            $this->render(
+                'Account.php',
+                [
+                    'idUser' => $this->idUser
+                ],
+                'Account'
+            );
     }
 }
