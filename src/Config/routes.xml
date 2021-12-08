@@ -7,8 +7,11 @@
     <route path="list" action="list" controller="ListController"/>
     <route path="post" action="post" controller="PostController" params="id"/>
     <route path="create" action="create" controller="CreateController"/>
+    <route path="createpost" action="createpost" controller="CreatePostController"/>
     <route path="log" action="log" controller="LogController"/>
+    <route path="delog" action="delog" controller="DelogController"/>
+    <route path="postinput" action="postinput" controller="PostinputController"/>
     <!-- Si aucune des routes s'affiche alors on redirige vers / -->
     <route path="*" action="index" controller="IndexController"/>
-    
+
 </routes>

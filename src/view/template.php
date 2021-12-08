@@ -33,8 +33,22 @@ if (empty($_SESSION)) {
     <header class="bg-gray-600 w-screen h-20 flex justify-between px-20 items-center">
         <img />
         <div class="h-auto">
+            <?php 
+            if($_SESSION['role'] == 'visiteur') {
+            ?>
             <a href="/signin" class="mx-5 p-2 h-24 bg-gray-800 text-white rounded-lg">Sign-in</a>
             <a href="/signup" class="mx-5 p-2 h-16 bg-indigo-900 text-white rounded-lg">Sign-up</a>
+            <?php
+            } elseif ($_SESSION['role'] == 'admin') {
+               ?>
+            <p>Bonjour, //USER//</p>
+            <div>
+                <a>acceder a mon compte</a>
+                <a href="/delog">se deconnecter</a>
+            </div>
+            <?php
+            }
+            ?>
         </div>
     </header>
 

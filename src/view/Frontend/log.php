@@ -17,6 +17,7 @@ if (!empty($log)) {
     echo var_dump($log);
     if (password_verify($_POST['password'], $log['password'])) {
         $_SESSION['role'] = 'admin';
+        $_SESSION['idUser'] = $log['id'];
         header('Location: /');
     } else {
         $_SESSION['role'] = 'visiteur';
