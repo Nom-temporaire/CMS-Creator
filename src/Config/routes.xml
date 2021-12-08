@@ -5,12 +5,16 @@
     <route path="signin" action="login" controller="LoginController"/>
     <route path="signup" action="SignUp" controller="SignupController"/>
     <route path="list" action="list" controller="ListController"/>
-    <route path="post" action="post" controller="PostController" params="id"/>
+    <route path="post" action="post" controller="PostController"/>
     <route path="create" action="create" controller="CreateController"/>
     <route path="createpost" action="createpost" controller="CreatePostController"/>
     <route path="log" action="log" controller="LogController"/>
+<<<<<<< HEAD
     <route path="delog" action="delog" controller="DelogController"/>
     <route path="postinput" action="postinput" controller="PostinputController"/>
+=======
+    <route path="account" action="account" controller="AccountController"/>
+>>>>>>> f4cdea023cb659e082d578f968d498955b1aa4b0
     <!-- Si aucune des routes s'affiche alors on redirige vers / -->
     <route path="*" action="index" controller="IndexController"/>
 
