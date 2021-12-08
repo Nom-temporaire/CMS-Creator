@@ -1,1 +1,2 @@
-<h1>Tu es à l'index</h1>
+<?php
+var_dump($_SESSION);

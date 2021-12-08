@@ -24,6 +24,16 @@ class UserManager extends BaseManager
             'mail' => $this->user->getMail(),
             'isAdmin' => $this->user->getIsAdmin(),
         ];
-        $requete->execute($data);
+        // on verifier que username et mail n'existent pas dans la base de données
+        $req = $this->pdo->prepare('SELECT * FROM users WHERE username = :username');
+
+        $req->bindValue(':username', $_POST['username']);
+        $req->execute();
+        $log = $req->fetch();
+        //si log est vide alors on peut ajouter l'utilisateur
+        if (empty($log)) {
+            $requete->execute();
+            $l = $req->fetch();
+        }
     }
 }
