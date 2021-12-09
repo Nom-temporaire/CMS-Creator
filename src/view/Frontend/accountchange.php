@@ -16,8 +16,9 @@ if (isset($_POST['isAdmin'])) {
 } else {
     $user->UpdateUser($_POST['username'], $_POST['password'], $_POST['mail'], 0, $_SESSION['idUser']);
 }
-echo 'oui';
-// var_dump($_POST);
-// header('Location: ./');
-// var_dump($_SESSION);
-// var_dump(isset($_POST['isAdmin']));
+if (isset($_SESSION['alert'])) {
+    header('Location: /account');
+} else {
+    $_SESSION['alert'] = "Modification effectuée";
+    header('Location: /account');
+}

@@ -3,6 +3,13 @@
 if ($_SESSION['role'] == 'visiteur') {
   header('Location: /');
 }
+//On verifie si dans la session il y a alerte
+// Si oui on l'affiche dans une alerte JS
+if (isset($_SESSION['alert'])) {
+  echo '<script>alert("' . $_SESSION['alert'] . '");</script>';
+  unset($_SESSION['alert']);
+}
+
 ?>
 
 
