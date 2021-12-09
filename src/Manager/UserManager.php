@@ -37,7 +37,7 @@ class UserManager extends BaseManager
             $l = $req->fetch();
         }
     }
-    public function UpdateManager($username, $email, $password, $role)
+    public function UpdateUser($username, $email, $password, $role)
     {
         $this->user = new User();
         $this->user->setUsername($username);
