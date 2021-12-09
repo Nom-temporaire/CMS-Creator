@@ -37,35 +37,48 @@ class UserManager extends BaseManager
             $l = $req->fetch();
         }
     }
-    public function UpdateManager($username, $email, $password, $role)
+    public function UpdateUser($username, $email, $password, $role)
     {
         $this->user=new User();
-        $this->user->setUsername($userrname);
+        $this->user->setUsername($username);
         $this->user->setMail($email);
         $this->user->setPassword($password);
         $this->user->setIsAdmin($role);
 
         //Modify data from database
-        $data = [
-            'username' => $this->user->getUsername(),
-            'mail' => $this->user->getMail(),
-            // 'password' => password_hash($this->user->getPassword(), PASSWORD_DEFAULT),
-            'isAdmin' => $this->user-getIsAdmin(),
-        ];
-        if ($this->user->getPassword!="")
-        {
-            array_push($data,this->user->getPassword())
-            $update = "UPDATE users (username, mail, password, isAdmin) VALUES (:username, :mail, :password, :isAdmin) WHERE id=:id";
-        }
-        else{
-            $update = "UPDATE users (username, mail, isAdmin) VALUES (:username, :mail, :isAdmin) WHERE id=:id";
-        }
-
+        // if (!empty($this->user->getUsername()))
+        // {
+        //     $update = "UPDATE users (username) SET (:username) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['username' => $this->user->getUsername(),'id'=>$_SESSION['idUser'] ];
+            
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
+        // if (!empty($this->user->getMail()))
+        // {
+        //     $update = "UPDATE users (mail) SET (:mail) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['mail' => $this->user->getMail(),'id'=>$_SESSION['idUser'] ];
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
+        // if (!empty($this->user->getPassword()))
+        // {
+        //     $update = "UPDATE users SET (password = :password) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['password' => password_hash($this->user->getPassword(), PASSWORD_DEFAULT),'id'=>$_SESSION['idUser'] ];
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
         
-        $req = $this->pdo->prepare($update)
-        $req->execute();
+        $update = "UPDATE `users` SET `isAdmin`=':isAdmin' WHERE `id`:id";
+        
+        $req = $this->pdo->prepare($update);
+        $data=['isAdmin' => intval($this->user->getIsAdmin()),'id'=>intval($_SESSION['idUser']) ];
+        var_dump($data);
+        $req->execute($data);
         $log = $req->fetch();
-
         
     }
 }
