@@ -72,7 +72,7 @@ class UserManager extends BaseManager
         //     $log = $req->fetch();
         // }
         
-        $update = "UPDATE `users` SET `isAdmin`=':isAdmin' WHERE `id`:id";
+        $update = "UPDATE users SET isAdmin=:isAdmin WHERE id = :id";
         
         $req = $this->pdo->prepare($update);
         $data=['isAdmin' => intval($this->user->getIsAdmin()),'id'=>intval($_SESSION['idUser']) ];
