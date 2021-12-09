@@ -84,7 +84,8 @@ class UserManager extends BaseManager
         $data = ['isAdmin' => intval($this->user->getIsAdmin()), 'id' => intval($id)];
         // si $id =1 alors on modifie le role admin dans sessions
         // Sinon on modifie le role user dans session
-        if (intval($id) == 1) {
+
+        if ($data['isAdmin'] == 1) {
             $_SESSION['role'] = "admin";
         } else {
             $_SESSION['role'] = "user";
@@ -94,18 +95,19 @@ class UserManager extends BaseManager
         $log = $req->fetch();
     }
 
-    public function getAllUsers(){
+    public function getAllUsers()
+    {
 
         $results = [];
 
         $select = "SELECT * FROM users ORDER BY username";
 
-       $this->pdoStatement = $this->pdo->query($select);
-        
-        while($users = $this->pdoStatement->fetchObject('App\Entity\User')){
+        $this->pdoStatement = $this->pdo->query($select);
+
+        while ($users = $this->pdoStatement->fetchObject('App\Entity\User')) {
             $results[] = $users;
         }
-        
+
         return $results;
     }
 
