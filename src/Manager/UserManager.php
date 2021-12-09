@@ -39,8 +39,8 @@ class UserManager extends BaseManager
     }
     public function UpdateManager($username, $email, $password, $role)
     {
-        $this->user=new User();
-        $this->user->setUsername($userrname);
+        $this->user = new User();
+        $this->user->setUsername($username);
         $this->user->setMail($email);
         $this->user->setPassword($password);
         $this->user->setIsAdmin($role);
@@ -49,23 +49,18 @@ class UserManager extends BaseManager
         $data = [
             'username' => $this->user->getUsername(),
             'mail' => $this->user->getMail(),
-            // 'password' => password_hash($this->user->getPassword(), PASSWORD_DEFAULT),
-            'isAdmin' => $this->user-getIsAdmin(),
+            'isAdmin' => $this->user->getIsAdmin(),
         ];
-        if ($this->user->getPassword!="")
-        {
-            array_push($data,this->user->getPassword())
+        if ($this->user->getPassword() != "") {
+            array_push($data, $this->user->getPassword());
             $update = "UPDATE users (username, mail, password, isAdmin) VALUES (:username, :mail, :password, :isAdmin) WHERE id=:id";
-        }
-        else{
+        } else {
             $update = "UPDATE users (username, mail, isAdmin) VALUES (:username, :mail, :isAdmin) WHERE id=:id";
         }
 
-        
-        $req = $this->pdo->prepare($update)
+
+        $req = $this->pdo->prepare($update);
         $req->execute();
         $log = $req->fetch();
-
-        
     }
 }
