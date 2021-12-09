@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['role'] == 'visiteur') {
+if ($_SESSION['role'] == 'visiteur'||$_SESSION['role'] == 'user') {
     header('Location: /');
   }
 use App\Manager\UserManager;
