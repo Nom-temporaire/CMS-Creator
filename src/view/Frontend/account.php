@@ -1,3 +1,11 @@
+<?php
+// Si le role dans session est visiteur alors on redirige vers la page d'accueil
+if ($_SESSION['role'] == 'visiteur') {
+  header('Location: /');
+}
+?>
+
+
 <form action="accountchange" method="post" class="w-full max-w-sm">
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
