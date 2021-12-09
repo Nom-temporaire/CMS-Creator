@@ -17,6 +17,7 @@
     <route path="account" action="account" controller="AccountController"/>
     <route path="accountchange" action="accountchange" controller="AccountchangeController"/>
     <route path="userlist" action="userlist" controller="UserlistController"/>
+    <route path="api" action="api" controller="ApiController"/>
     <!-- Si aucune des routes s'affiche alors on redirige vers / -->
     <route path="*" action="list" controller="ListController"/>
 

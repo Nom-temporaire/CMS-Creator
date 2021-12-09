@@ -33,8 +33,5 @@ abstract class BaseController
         $content = ob_get_clean();
         require $this->templateFile;
         exit;
-
     }
 }
-
-?>
