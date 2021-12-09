@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <routes>
-    <route path="verifUser" action="index" controller="IndexController"/>
+    <route path="verifuser" action="index" controller="IndexController"/>
     <route path="signin" action="login" controller="LoginController"/>
     <route path="signup" action="SignUp" controller="SignupController"/>
     <route path="list" action="list" controller="ListController"/>
