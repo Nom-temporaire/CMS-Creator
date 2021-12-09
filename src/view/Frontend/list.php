@@ -15,7 +15,7 @@ $result = $post->getAllPosts();
         <p class="my-2"><?= $post->getContent() ?></p>
         <div class="w-full flex justify-between">
             <p><?= $post->getDate() ?></p>
-            <a class="text-right" <?= 'href="/post/' . $post->getId() .'"' ?>>Voir plus ...</a>
+            <a class="text-right" <?= 'href="/post/' . $post->getIdPost() .'"' ?>>Voir plus ...</a>
         </div>
     </div>
     <?php endforeach; ?>

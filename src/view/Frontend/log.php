@@ -25,7 +25,7 @@ if (!empty($log)) {
         } else {
             $_SESSION['role'] = 'user';
         }
-        $_SESSION['idUser'] = $log['id'];
+        $_SESSION['idUser'] = $log['idUser'];
         $_SESSION['username'] = $log['username'];
 
         header('Location: /');
