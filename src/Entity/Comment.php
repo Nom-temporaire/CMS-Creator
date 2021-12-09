@@ -6,6 +6,7 @@ class Comment{
     private $id;
     private $idPost;
     private $idUser;
+    private $username;
     private $content;
     private $date;
 
@@ -19,6 +20,14 @@ class Comment{
 
     public function getIdUser(){
         return $this->idUser;
+    }
+
+    public function getUsername(){
+        return $this->username;
+    }
+
+    public function setUsername($username){
+        $this->username = $username;
     }
 
     public function getContent(){

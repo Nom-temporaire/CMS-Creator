@@ -44,7 +44,12 @@ $result = $users->getAllUsers();
             <td class="px-4 py-3 text-xs border">
               <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"><?= $users->getDate() ?></span>
             </td>
-            <td class="px-4 py-3 text-sm border">SUPPRIMER</td>
+            <td class="px-4 py-3 text-sm border" id=<?= $users->getId() ?>>
+                <form action="deleteuser" method="post" class="m-auto flex flex-col">
+                    <input type="hidden" name="idUserDel" value="<?= $users->getId() ?>">
+                    <input type="submit" value="SUPPRIMER">
+                </form>
+            </td>
           </tr>
     <?php endforeach; ?>
         </tbody>

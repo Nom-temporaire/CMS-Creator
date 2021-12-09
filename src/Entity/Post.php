@@ -3,15 +3,16 @@
 namespace App\Entity;
 
 class Post{
-    private $id;
+    private $idPost;
     private $title;
     private $content;
     private $author;
+    private $authorUserName;
     private $date;
 
-    public function getId(): ?int
+    public function getIdPost(): ?int
     {
-        return $this->id;
+        return $this->idPost;
     }
 
     public function getTitle(): ?string
@@ -46,6 +47,18 @@ class Post{
     public function setAuthor(int $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getAuthorUserName(): ?string
+    {
+        return $this->authorUserName;
+    }
+
+    public function setAuthorUserName(string $authorUserName): self
+    {
+        $this->authorUserName = $authorUserName;
 
         return $this;
     }

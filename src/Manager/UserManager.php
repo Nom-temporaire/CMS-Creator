@@ -110,4 +110,15 @@ class UserManager extends BaseManager
 
         return $results;
     }
+
+    public function DeleteUser($idUser, $idUserDel)
+    {
+        if ($idUser != $idUserDel)
+        {
+            $delete = "DELETE FROM users WHERE id = :idUserDel LIMIT 1";
+            $req = $this->pdo->prepare($delete);
+            $req->bindValue(':idUserDel', $idUserDel);
+            $req->execute();
+        }
+    }
 }

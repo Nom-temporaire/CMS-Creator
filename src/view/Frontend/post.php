@@ -14,7 +14,6 @@ $result = $post->getPost($id);
 $comment = new CommentManager(PDOFactory::getMysqlConnection());
 $comments = $comment->getComments($id);
 
-
 ?>
 
 <div class="mx-auto mt-20 flex flex-col text-xl w-11/12">
@@ -23,6 +22,7 @@ $comments = $comment->getComments($id);
         <p><?= $result->getContent() ?></p>
         <h4>Fait par user - le <?= $result->getDate() ?></h4>
     </div>
+    <?php if($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') {?>
     <div class="w-full mt-20">
         <form action="/createcomment" method="post">
             <div class="mb-6">
@@ -36,14 +36,17 @@ $comments = $comment->getComments($id);
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Poster</button>
         </form>
     </div>
+    <?php } ?>
     <div class="mx-auto mt-20 w-11/12">
         <?php foreach ($comments as $comment) : ?>
         <div class="my-8 w-full">
             <div class="flex">
-                <h4 class="mr-4">UserCommentary</h4>
+                <h4 class="mr-4"><?= $comment->getUsername() ?></h4>
                 <p class="ml-4">Le <?= $comment->getDate() ?></p>
             </div>
             <p class="break-all"><?= $comment->getContent() ?></p>
+            <a href="/deletecomment"
+                class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
         </div>
         <?php endforeach; ?>
     </div>

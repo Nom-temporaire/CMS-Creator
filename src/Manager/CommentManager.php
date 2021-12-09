@@ -28,16 +28,26 @@ class CommentManager extends BaseManager{
     public function getComments($idPost){
         $results = [];
 
-        $select = "SELECT * FROM commentaires WHERE idPost = :idPost";
+        $select = "SELECT idComment, commentaires.idUser, idPost, commentaires.date, content, username FROM users JOIN commentaires ON users.idUser = commentaires.idUser WHERE commentaires.idPost = :idPost";
+
+        //$select = "SELECT * FROM commentaires WHERE idPost = :idPost";
 
         $this->pdoStatement = $this->pdo->prepare($select);
         $this->pdoStatement->bindValue(':idPost', $idPost);
         $this->pdoStatement->execute();
 
-        while($comment = $this->pdoStatement->fetchObject('App\Entity\Post')){
+        while($comment = $this->pdoStatement->fetchObject('App\Entity\Comment')){
             $results[] = $comment;
         }
 
         return $results;
+    }
+
+    public function deleteComment($comment){
+        $delete = "DELETE FROM commentaires WHERE id = :id LIMIT 1";
+        $this->pdoStatement = $this->pdo->prepare($delete);
+        $this->pdoStatement->bindValue('id', $comment->getId(), \PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
     }
 }
