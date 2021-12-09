@@ -29,23 +29,25 @@ if (empty($_SESSION)) {
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="h-screen w-screen">
+<body class="h-screen w-screen overflow-x-hidden">
     <header class="bg-gray-600 w-screen h-20 flex justify-between px-20 items-center">
         <img />
         <div class="h-auto">
             <?php
             if ($_SESSION['role'] == 'visiteur') {
             ?>
-                <a href="/signin" class="mx-5 p-2 h-24 bg-gray-800 text-white rounded-lg">Sign-in</a>
-                <a href="/signup" class="mx-5 p-2 h-16 bg-indigo-900 text-white rounded-lg">Sign-up</a>
+            <a href="/signin" class="mx-5 p-2 h-24 bg-gray-800 text-white rounded-lg">Sign-in</a>
+            <a href="/signup" class="mx-5 p-2 h-16 bg-indigo-900 text-white rounded-lg">Sign-up</a>
             <?php
             } elseif ($_SESSION['role'] == 'admin') {
             ?>
-                <p>Bonjour,<a href='account' class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"><?= $_SESSION['username'] ?></a></p>
-                <div>
-                    <!-- <a>acceder a mon compte</a> -->
-                    <a href="/delog">se deconnecter</a>
-                </div>
+            <p>Bonjour,<a href='account'
+                    class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"><?= $_SESSION['username'] ?></a>
+            </p>
+            <div>
+                <!-- <a>acceder a mon compte</a> -->
+                <a href="/delog">se deconnecter</a>
+            </div>
             <?php
             }
             ?>
