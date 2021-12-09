@@ -39,10 +39,46 @@ class UserManager extends BaseManager
     }
     public function UpdateUser($username, $email, $password, $role)
     {
-        $this->user = new User();
+        $this->user=new User();
         $this->user->setUsername($username);
         $this->user->setMail($email);
         $this->user->setPassword($password);
         $this->user->setIsAdmin($role);
+
+        //Modify data from database
+        // if (!empty($this->user->getUsername()))
+        // {
+        //     $update = "UPDATE users (username) SET (:username) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['username' => $this->user->getUsername(),'id'=>$_SESSION['idUser'] ];
+            
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
+        // if (!empty($this->user->getMail()))
+        // {
+        //     $update = "UPDATE users (mail) SET (:mail) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['mail' => $this->user->getMail(),'id'=>$_SESSION['idUser'] ];
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
+        // if (!empty($this->user->getPassword()))
+        // {
+        //     $update = "UPDATE users SET (password = :password) WHERE id=:id";
+        //     $req = $this->pdo->prepare($update);
+        //     $data=['password' => password_hash($this->user->getPassword(), PASSWORD_DEFAULT),'id'=>$_SESSION['idUser'] ];
+        //     $req->execute($data);
+        //     $log = $req->fetch();
+        // }
+        
+        $update = "UPDATE `users` SET `isAdmin`=':isAdmin' WHERE `id`:id";
+        
+        $req = $this->pdo->prepare($update);
+        $data=['isAdmin' => intval($this->user->getIsAdmin()),'id'=>intval($_SESSION['idUser']) ];
+        var_dump($data);
+        $req->execute($data);
+        $log = $req->fetch();
+        
     }
 }
