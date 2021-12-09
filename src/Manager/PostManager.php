@@ -46,6 +46,6 @@ class PostManager extends BaseManager{
             $results[] = $post;
         }
 
-        return $results;
+        return array_reverse($results);
     }
 }
