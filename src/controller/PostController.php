@@ -8,7 +8,9 @@ class PostController extends BaseController
     {
         $this->render(
             'post.php',
-            [],
+            [
+                'id'=>$this->params['id'],
+            ],
             'Bonne Route'
         );
     }

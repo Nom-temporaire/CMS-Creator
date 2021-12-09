@@ -7,7 +7,7 @@ class Post{
     private $title;
     private $content;
     private $author;
-    private $createdAt;
+    private $date;
 
     public function getId(): ?int
     {
@@ -50,14 +50,14 @@ class Post{
         return $this;
     }
 
-    public function getCreatedAt(string $createdAt): ?string
+    public function getDate(): ?string
     {
-        return $this->createdAt;
+        return $this->date;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setDate(string $date): self
     {
-        $this->createdAt = $createdAt;
+        $this->date = $date;
 
         return $this;
     }

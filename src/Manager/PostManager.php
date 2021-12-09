@@ -13,12 +13,12 @@ class PostManager extends BaseManager{
         //$post->setCreatedAt(new \DateTime());
         //$post->setUpdatedAt(new \DateTime());
 
-        $insert = "INSERT INTO post (nom, contenu, idUser) VALUES (:nom, :contenu, :idUser)";
+        $insert = "INSERT INTO post (title, content, IDauthor) VALUES (:title, :content, :IDauthor)";
         $request = $this->pdo->prepare($insert);
         $data = [
-            'nom' => $title,
-            'contenu' => $content,
-            'idUser' => $authorID
+            'title' => $title,
+            'content' => $content,
+            'IDauthor' => $authorID
         ];
 
         $request->execute($data);
@@ -26,11 +26,12 @@ class PostManager extends BaseManager{
 
     public function getPost($id){
         $select = "SELECT * FROM post WHERE id = :id";
-        $request = $this->pdo->prepare($select);
-        $request->execute(['id' => $id]);
-        $post = $request->fetch();
+        $this->pdoStatement = $this->pdo->prepare($select);
+        $this->pdoStatement->bindValue('id', $id, \PDO::PARAM_INT);
+        $this->pdoStatement->execute();
 
-        return $post;
+        $result = $this->pdoStatement->fetchObject('App\Entity\Post');
+        return $result;
     }
 
     public function getAllPosts(){
@@ -39,9 +40,9 @@ class PostManager extends BaseManager{
 
         $select = "SELECT * FROM post";
 
-        $request = $this->pdo->query($select);
+       $this->pdoStatement = $this->pdo->query($select);
         
-        while($post = $request->fetch()){
+        while($post = $this->pdoStatement->fetchObject('App\Entity\Post')){
             $results[] = $post;
         }
 
