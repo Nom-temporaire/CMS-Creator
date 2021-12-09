@@ -44,23 +44,5 @@ class UserManager extends BaseManager
         $this->user->setMail($email);
         $this->user->setPassword($password);
         $this->user->setIsAdmin($role);
-
-        //Modify data from database
-        $data = [
-            'username' => $this->user->getUsername(),
-            'mail' => $this->user->getMail(),
-            'isAdmin' => $this->user->getIsAdmin(),
-        ];
-        if ($this->user->getPassword() != "") {
-            array_push($data, $this->user->getPassword());
-            $update = "UPDATE users (username, mail, password, isAdmin) VALUES (:username, :mail, :password, :isAdmin) WHERE id=:id";
-        } else {
-            $update = "UPDATE users (username, mail, isAdmin) VALUES (:username, :mail, :isAdmin) WHERE id=:id";
-        }
-
-
-        $req = $this->pdo->prepare($update);
-        $req->execute();
-        $log = $req->fetch();
     }
 }

@@ -40,7 +40,12 @@ if ($_SESSION['role'] == 'visiteur') {
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3"></div>
     <label for="isAdmin" class="md:w-2/3 block text-gray-500 font-bold">
-      <input class="mr-2 leading-tight" name="isAdmin" type="checkbox">
+      <!-- On verifier le role dans $_SESSION -->
+      <!-- Si c'est admin alors c'est checked -->
+      <!-- sinon ce n'est pas check -->
+      <input class="mr-2 leading-tight" type="checkbox" name="isAdmin" value="1" <?php if ($_SESSION['role'] == 'admin') {
+                                                                                    echo 'checked';
+                                                                                  } ?>>
       <span class="text-sm">
         is Admin ?
       </span>
