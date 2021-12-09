@@ -32,7 +32,7 @@ if (empty($_SESSION)) {
             <?php
             } else {
             ?>
-            <p>Bonjour,<a href='account'
+            <p>Bonjour,<a href='/account'
                     class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"><?= $_SESSION['username'] ?></a>
             </p>
             <div>
