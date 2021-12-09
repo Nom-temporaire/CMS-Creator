@@ -3,3 +3,4 @@
 if ($_SESSION['role'] == 'visiteur') {
   header('Location: /');
 }
+var_dump($_POST);
