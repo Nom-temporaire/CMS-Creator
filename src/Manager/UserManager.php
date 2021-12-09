@@ -51,7 +51,6 @@ class UserManager extends BaseManager
         //     $update = "UPDATE users (username) SET (:username) WHERE id=:id";
         //     $req = $this->pdo->prepare($update);
         //     $data=['username' => $this->user->getUsername(),'id'=>$_SESSION['idUser'] ];
-
         //     $req->execute($data);
         //     $log = $req->fetch();
         // }
