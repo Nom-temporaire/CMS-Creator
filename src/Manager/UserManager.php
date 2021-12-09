@@ -79,4 +79,19 @@ class UserManager extends BaseManager
         $req->execute($data);
         $log = $req->fetch();
     }
+
+    public function getAllUsers(){
+
+        $results = [];
+
+        $select = "SELECT * FROM users ORDER BY username";
+
+       $this->pdoStatement = $this->pdo->query($select);
+        
+        while($users = $this->pdoStatement->fetchObject('App\Entity\User')){
+            $results[] = $users;
+        }
+        
+        return $results;
+    }
 }

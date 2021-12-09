@@ -9,6 +9,7 @@ class User
     private string $password;
     private string $mail;
     private int $isAdmin;
+    private string $date;
 
     // All setters and getters
     public function getId(): int
@@ -55,5 +56,14 @@ class User
     public function setIsAdmin(int $isAdmin): void
     {
         $this->isAdmin = $isAdmin;
+    }
+
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+    public function setDate(string $date): void
+    {
+        $this->date = $date;
     }
 }
