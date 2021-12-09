@@ -1,5 +1,7 @@
-<?php 
+<?php
+
 namespace App\Fram;
+
 use App\Controller\ErrorController;
 
 class Router
@@ -18,19 +20,17 @@ class Router
                 $action = $route->getAttribute('action');
                 $params = [];
                 if ($route->hasAttribute('params')) {
+
                     $paramsArray = explode(',', $route->getAttribute('params'));
                     foreach ($paramsArray as $param) {
                         $params[$param] = $_GET[$param];
                     }
                 }
+
                 return new $controllerClass($action, $params);
             }
-
-
         }
 
         return new ErrorController('error404');
-
-
     }
 }

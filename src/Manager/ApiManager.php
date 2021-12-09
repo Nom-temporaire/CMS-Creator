@@ -22,8 +22,12 @@ class ApiManager extends BaseManager
             'id' => $id
         ]);
         // on fetch assoc
-        $log     = $request->fetch(\PDO::FETCH_ASSOC);
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
         //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "User not found"];
+        }
         $json = json_encode($log);
         //retourne le JSON
 
@@ -31,5 +35,146 @@ class ApiManager extends BaseManager
     }
     public function getUsers()
     {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('SELECT * FROM users');
+
+        $request->execute();
+        // on fetch assoc
+        $log = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+
+    public function getCommentaire(int $id)
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('SELECT * FROM commentaires WHERE id = :id');
+
+        $request->execute([
+            'id' => $id
+        ]);
+        // on fetch assoc
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "Comment not found"];
+        }
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+
+    public function getCommentaires()
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('SELECT * FROM commentaires');
+        $request->execute();
+        // on fetch assoc
+        $log = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+    public function getPost(int $id)
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('SELECT * FROM post WHERE id = :id');
+
+        $request->execute([
+            'id' => $id
+        ]);
+        // on fetch assoc
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "Post not found"];
+        }
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+    public function getPosts()
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('SELECT * FROM post');
+        $request->execute();
+        // on fetch assoc
+        $log = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+
+    // On fait les méthodes pour les DELETE
+    public function deleteUser(int $id)
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('DELETE FROM users WHERE id = :id');
+
+        $request->execute([
+            'id' => $id
+        ]);
+        // on fetch assoc
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "User Delete"];
+        }
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+    public function deleteCommentaire(int $id)
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('DELETE FROM commentaires WHERE id = :id');
+
+        $request->execute([
+            'id' => $id
+        ]);
+        // on fetch assoc
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "Comment Delete"];
+        }
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
+    }
+    public function deletePost(int $id)
+    {
+        $_SESSION['json'] = "true";
+        $request = $this->pdo->prepare('DELETE FROM post WHERE id = :id');
+
+        $request->execute([
+            'id' => $id
+        ]);
+        // on fetch assoc
+        $log = $request->fetch(\PDO::FETCH_ASSOC);
+        //transforme les données en JSON
+
+        if ($log === false) {
+            $log = ["error" => "Post Delete"];
+        }
+        $json = json_encode($log);
+        //retourne le JSON
+
+        return $json;
     }
 }

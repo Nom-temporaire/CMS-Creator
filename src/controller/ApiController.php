@@ -11,7 +11,11 @@ class ApiController extends BaseController
 
         $this->render(
             'API/api.php',
-            [],
+            [
+                "type" => $this->params['type'],
+                "id" => $this->params['id'],
+                "mode" => $this->params['mode'],
+            ],
             'Api'
         );
     }
