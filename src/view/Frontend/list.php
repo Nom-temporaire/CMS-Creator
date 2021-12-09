@@ -1,18 +1,22 @@
-<div class="mt-20 flex flex-col">
+<?php
+
+use App\Manager\PostManager;
+use App\Fram\Factories\PDOFactory;
+
+$post = new PostManager(PDOFactory::getMysqlConnection());
+$result = $post->getAllPosts();
+
+?>
+
+<div class="w-full mt-20 flex flex-col">
+    <?php foreach ($result as $post) : ?>
     <div class="m-6 p-2 border-2 border-black">
-        <h3 class="font-bold">Mon super article !</h3>
-        <p class="my-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis placeat cupiditate magni
-            beatae? Eveniet
-            vitae atque enim dicta. Consectetur quae laboriosam hic officiis asperiores odio at tempora, modi optio
-            incidunt!</p>
-        <a class="text-right">Voir plus ...</a>
+        <h3 class="font-bold"><?= $post["nom"] ?></h3>
+        <p class="my-2"><?= $post["contenu"] ?></p>
+        <div class="w-full flex justify-between">
+            <p><?= $post["date"] ?></p>
+            <a class="text-right">Voir plus ...</a>
+        </div>
     </div>
-    <div class="m-6 p-2 border-2 border-black">
-        <h3 class="font-bold">Mon super article !</h3>
-        <p class="my-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis placeat cupiditate magni
-            beatae? Eveniet
-            vitae atque enim dicta. Consectetur quae laboriosam hic officiis asperiores odio at tempora, modi optio
-            incidunt!</p>
-        <a class="text-right justify-end">Voir plus ...</a>
-    </div>
+    <?php endforeach; ?>
 </div>

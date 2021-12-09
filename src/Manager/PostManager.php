@@ -23,4 +23,28 @@ class PostManager extends BaseManager{
 
         $request->execute($data);
     }
+
+    public function getPost($id){
+        $select = "SELECT * FROM post WHERE id = :id";
+        $request = $this->pdo->prepare($select);
+        $request->execute(['id' => $id]);
+        $post = $request->fetch();
+
+        return $post;
+    }
+
+    public function getAllPosts(){
+
+        $results = [];
+
+        $select = "SELECT * FROM post";
+
+        $request = $this->pdo->query($select);
+        
+        while($post = $request->fetch()){
+            $results[] = $post;
+        }
+
+        return $results;
+    }
 }
