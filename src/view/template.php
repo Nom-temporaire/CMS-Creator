@@ -5,15 +5,6 @@ if (empty($_SESSION)) {
     session_start();
     $_SESSION['role'] = 'visiteur';
     // header('Location: index');
-} else {
-    // verifier si le role dans session est visiteur
-    if ($_SESSION['role'] == 'visiteur') {
-        // header('Location: index');
-    } elseif ($_SESSION['role'] == 'admin') {
-        // si le role est admin, on va afficher la page admin
-        // header('Location: index');
-
-    }
 }
 ?>
 
@@ -39,7 +30,7 @@ if (empty($_SESSION)) {
             <a href="/signin" class="mx-5 p-2 h-24 bg-gray-800 text-white rounded-lg">Sign-in</a>
             <a href="/signup" class="mx-5 p-2 h-16 bg-indigo-900 text-white rounded-lg">Sign-up</a>
             <?php
-            } elseif ($_SESSION['role'] == 'admin') {
+            } else {
             ?>
             <p>Bonjour,<a href='account'
                     class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"><?= $_SESSION['username'] ?></a>

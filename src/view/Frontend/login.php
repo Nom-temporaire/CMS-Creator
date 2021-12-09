@@ -1,9 +1,10 @@
 <div class="w-4/12 mx-auto mt-20 h-2/6 p-8 bg-gray-300 rounded-lg flex flex-col items-center justify-center">
     =======
     <?php
-    // Verifier si $_POST est vide ou non
-    // Si $_POST est vide, on affiche le formulaire
-    // Sinon, on affiche une alerte
+    if (isset($_SESSION['alert'])) {
+        echo '<script>alert("' . $_SESSION['alert'] . '");</script>';
+        unset($_SESSION['alert']);
+    }
 
     ?>
     <h1>Login</h1>

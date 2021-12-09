@@ -12,20 +12,30 @@ $log = $req->fetch();
 
 //si log n'est pas vide alors on verifie si le mot de passe dans $_POST est bon
 //si la condition est vraie alors on set le role dans session a admin
-echo var_dump($log);
 if (!empty($log)) {
-    echo var_dump($log);
     if (password_verify($_POST['password'], $log['password'])) {
-        $_SESSION['role'] = 'admin';
+
+        $request = $pdo->prepare("SELECT isAdmin FROM users WHERE username=:username");
+
+        $request->bindValue(':username', $log['username']);
+        $request->execute();
+        $role = $request->fetch();
+        if ($role["isAdmin"] == "1") {
+            $_SESSION['role'] = 'admin';
+        } else {
+            $_SESSION['role'] = 'user';
+        }
         $_SESSION['idUser'] = $log['id'];
         $_SESSION['username'] = $log['username'];
 
         header('Location: /');
     } else {
         $_SESSION['role'] = 'visiteur';
-        header('Location: /');
+        $_SESSION['alert'] = "Le mot de passe est incorrect";
+        header('Location: ./signin');
     }
 } else {
     $_SESSION['role'] = 'visiteur';
-    header('Location: /');
+    $_SESSION['alert'] = "Les identifiants sont incorrects";
+    header('Location: ./signin');
 }

@@ -6,11 +6,11 @@ class AccountController extends BaseController
 {
     public function executeAccount()
     {
-        $id =
-            $this->render(
-                'account.php',
-                [],
-                'Account'
-            );
+
+        $this->render(
+            'account.php',
+            [],
+            'Account'
+        );
     }
 }
