@@ -12,6 +12,7 @@
     <route path="delog" action="delog" controller="DelogController"/>
     <route path="postinput" action="postinput" controller="PostinputController"/>
     <route path="account" action="account" controller="AccountController"/>
+    <route path="accountchange" action="accountchange" controller="AccountchangeController"/>
     <!-- Si aucune des routes s'affiche alors on redirige vers / -->
     <route path="*" action="index" controller="IndexController"/>
 
