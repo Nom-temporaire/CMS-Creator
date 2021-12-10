@@ -21,6 +21,8 @@ $comments = $comment->getComments($id);
         <h1 class="font-bold my-4 text-2xl"><?= $result->getTitle() ?></h1>
         <p><?= $result->getContent() ?></p>
         <h4>Fait par user - le <?= $result->getDate() ?></h4>
+        <a href="/deletepost/<?= $result->getIdPost() ?>"
+            class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
     </div>
     <?php if($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') {?>
     <div class="w-full mt-20">
@@ -45,7 +47,7 @@ $comments = $comment->getComments($id);
                 <p class="ml-4">Le <?= $comment->getDate() ?></p>
             </div>
             <p class="break-all"><?= $comment->getContent() ?></p>
-            <a href="/deletecomment"
+            <a href="/deletecomment/<?= $comment->getId() ?>"
                 class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
         </div>
         <?php endforeach; ?>

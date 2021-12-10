@@ -43,10 +43,21 @@ class CommentManager extends BaseManager{
         return $results;
     }
 
+    public function getComment($id)
+    {
+        $select = "SELECT * FROM commentaires WHERE idComment = :idComment";
+        $this->pdoStatement = $this->pdo->prepare($select);
+        $this->pdoStatement->bindValue('idComment', $id, \PDO::PARAM_INT);
+        $this->pdoStatement->execute();
+
+        $result = $this->pdoStatement->fetchObject('App\Entity\Comment');
+        return $result;
+    }
+
     public function deleteComment($comment){
-        $delete = "DELETE FROM commentaires WHERE id = :id LIMIT 1";
+        $delete = "DELETE FROM commentaires WHERE idComment = :id LIMIT 1";
         $this->pdoStatement = $this->pdo->prepare($delete);
-        $this->pdoStatement->bindValue('id', $comment->getId(), \PDO::PARAM_INT);
+        $this->pdoStatement->bindValue('id', $comment, \PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
     }

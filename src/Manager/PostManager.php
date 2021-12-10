@@ -37,11 +37,11 @@ class PostManager extends BaseManager
         return $result;
     }
 
-    public function deletePost($post)
+    public function deletePost($idPost)
     {
-        $delete = "DELETE FROM post WHERE id = :id LIMIT 1";
+        $delete = "DELETE FROM post WHERE idPost = :idPost LIMIT 1";
         $this->pdoStatement = $this->pdo->prepare($delete);
-        $this->pdoStatement->bindValue('id', $post->getId(), \PDO::PARAM_INT);
+        $this->pdoStatement->bindValue('idPost', $idPost, \PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
     }
