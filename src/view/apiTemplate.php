@@ -1,1 +1,3 @@
-<!-- image avec un sr egale à $content -->
+<?php
+header('Content-Type: application/json');
+echo $content;

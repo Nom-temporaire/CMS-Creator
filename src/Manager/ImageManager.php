@@ -61,11 +61,12 @@ class ImageManager extends BaseManager
                     $req->execute();
                     $id = $req->fetch();
 
-                    $insert = "INSERT INTO images (idPost, chemin) VALUES (:idPost, :chemin)";
+                    $insert = "INSERT INTO images (idPost, chemin, idUser) VALUES (:idPost, :chemin, :idUser)";
                     $requete = $this->pdo->prepare($insert);
                     $data = [
                         'idPost' => $id[0],
-                        'chemin' => $target_file
+                        'chemin' => $target_file,
+                        'idUser' => $_SESSION['idUser']
                     ];
                     $requete->execute($data);
 
@@ -85,5 +86,55 @@ class ImageManager extends BaseManager
         $req->execute(['id' => $idPost]);
         $chemin = $req->fetch();
         return $chemin;
+    }
+
+    public function getCheminsFromUser($idUser)
+    {
+        $results = [];
+
+        $select = "SELECT chemin FROM images WHERE idUser = :idUser";
+        $this->pdoStatement = $this->pdo->prepare($select);
+        $this->pdoStatement->bindValue(':idUser', $idUser);
+        $this->pdoStatement->execute();
+
+        while($image = $this->pdoStatement->fetchObject('App\Entity\Image')){
+            $results[] = $image;
+        }
+
+        return $results;
+    }
+
+    public function getCheminsFromPost($idPost)
+    {
+        $results = [];
+
+        $select = "SELECT chemin FROM images WHERE idPost = :idPost";
+        $this->pdoStatement = $this->pdo->prepare($select);
+        $this->pdoStatement->bindValue(':idPost', $idPost);
+        $this->pdoStatement->execute();
+
+        while($image = $this->pdoStatement->fetchObject('App\Entity\Image')){
+            $results[] = $image;
+        }
+
+        return $results;
+    }
+
+    public function deleteImagesFromUser($idUser)
+    {
+        $delete = "DELETE FROM images WHERE idUser = :idUser";
+        $this->pdoStatement = $this->pdo->prepare($delete);
+        $this->pdoStatement->bindValue('idUser', $idUser, \PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
+    }
+
+    public function deleteImagesFromPost($idPost)
+    {
+        $delete = "DELETE FROM images WHERE idPost = :idPost";
+        $this->pdoStatement = $this->pdo->prepare($delete);
+        $this->pdoStatement->bindValue('idPost', $idPost, \PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
     }
 }

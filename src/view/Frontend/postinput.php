@@ -13,7 +13,7 @@ if ($_SESSION['role'] == 'visiteur') {
 
         <div class="mb-6">
             <label for="image" class="text-2xl font-medium text-gray-200 block mb-2 ml-5">Image</label>
-            <input type="file" id="file" name="file" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="IMAGE" required="">
+            <input type="file" id="file" name="file" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="IMAGE" accept="image/jpg, image/gif, image/jpeg, image/png">>
         </div>
         <div class="mb-6">
             <label for="contenu" class="text-2xl font-medium text-gray-200 block mb-2 ml-5">Contenu</label>
