@@ -22,27 +22,48 @@ if (empty($_SESSION['json'])) :
     </head>
 
     <body class="h-screen w-screen overflow-x-hidden">
-        <header class="bg-gray-600 w-screen h-20 flex justify-between px-20 items-center">
-            <img />
-            <div class="h-auto">
-                <?php
-                if ($_SESSION['role'] == 'visiteur') {
+        <header class="px-6 py-4">
+        <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a class="text-xl font-bold text-gray-800 md:text-2xl">Bonjour <?=$_SESSION['username']?></a>
+                </div>
+                <div>
+                    <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-col hidden md:flex md:flex-row md:-mx-4">
+                <a href="/" class="mx-5 p-2 h-1/2 bg-indigo-900 text-white rounded-lg">Home</a>
+            <?php
+                if ($_SESSION['role'] == 'admin') {
                 ?>
-                    <a href="/signin" class="mx-5 p-2 h-24 bg-gray-800 text-white rounded-lg">Sign-in</a>
-                    <a href="/signup" class="mx-5 p-2 h-16 bg-indigo-900 text-white rounded-lg">Sign-up</a>
+                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des Utilisateurs</a>
+                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
-                } else {
+                }
+                elseif ($_SESSION['role'] == 'user') {
                 ?>
-                    <p>Bonjour,<a href='/account' class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"><?= $_SESSION['username'] ?></a>
-                    </p>
-                    <div>
-                        <!-- <a>acceder a mon compte</a> -->
-                        <a href="/delog">se deconnecter</a>
-                    </div>
+                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
+                <?php
+                }
+                else {
+                ?>
+                <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
+                <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-900 text-white rounded-lg">Sign Up</a>
                 <?php
                 }
                 ?>
             </div>
+        </div>
         </header>
 
 
