@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 class Comment{
-    private $id;
+    private $idComment;
     private $idPost;
     private $idUser;
     private $username;
@@ -11,7 +11,7 @@ class Comment{
     private $date;
 
     public function getId(){
-        return $this->id;
+        return $this->idComment;
     }
 
     public function getIdPost(){
