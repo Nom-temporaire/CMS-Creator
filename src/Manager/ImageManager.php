@@ -66,6 +66,7 @@ class ImageManager extends BaseManager
                     $data = [
                         'idPost' => $id[0],
                         'chemin' => $target_file
+
                     ];
                     $requete->execute($data);
 
