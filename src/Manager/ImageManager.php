@@ -12,7 +12,7 @@ class ImageManager extends BaseManager
         if (isset($_FILES['file'])) {
             //__DIR__ . './../public/images/' est le chemin vers le dossier ou l'on veut stocker les images
             $target_dir = '/var/www/html/public/images/';
-            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+            $target_file = basename($_FILES["file"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
@@ -27,13 +27,13 @@ class ImageManager extends BaseManager
                 }
             }
             // Check if file already exists
-            if (file_exists($target_file)) {
+            if (file_exists($target_dir . $target_file)) {
                 //On rajoute_un_chiffre au nom de l'image
                 // on va boucler tant que le fichier existe
                 $i = 1;
-                while (file_exists($target_file)) {
+                while (file_exists($target_dir . $target_file)) {
                     $i++;
-                    $target_file = $target_dir . $i . basename($_FILES["file"]["name"]);
+                    $target_file = $i . "_" . basename($_FILES["file"]["name"]);
                 }
             }
             // Check file size
@@ -54,7 +54,7 @@ class ImageManager extends BaseManager
                 echo "Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir . $target_file)) {
                     // le str target_file est le chemin vers l'image et va dans la bdd 
                     $targetId = 'SELECT MAX(idPost) FROM post';
                     $req = $this->pdo->prepare($targetId);
@@ -75,5 +75,15 @@ class ImageManager extends BaseManager
                 }
             }
         }
+    }
+
+    // afficher une image
+    public function getChemin($idPost)
+    {
+        $select = "SELECT chemin FROM images WHERE idPost = :id";
+        $req = $this->pdo->prepare($select);
+        $req->execute(['id' => $idPost]);
+        $chemin = $req->fetch();
+        return $chemin;
     }
 }

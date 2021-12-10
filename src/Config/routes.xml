@@ -22,6 +22,7 @@
     <route path="api" action="api" controller="ApiController" params="type,id,mode" />
     <route path="deleteuser" action="deleteuser" controller="DeleteuserController"/>
     <route path="api" action="api" controller="ApiController"/>
+    <route path="image" action="image" controller="ImageController" params="id"/>
     <!-- Si aucune des routes s'affiche alors on redirige vers / -->
     <route path="*" action="list" controller="ListController"/>
 
