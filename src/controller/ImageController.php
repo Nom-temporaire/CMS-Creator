@@ -12,7 +12,7 @@ class ImageController extends BaseController
         $this->image = new ImageManager(PDOFactory::getMysqlConnection());
 
         $this->chemin = $this->image->getChemin($this->params['id'])[0];
-        $this->renderImage(
+        $this->render(
             $this->chemin,
             [],
             'Image'
