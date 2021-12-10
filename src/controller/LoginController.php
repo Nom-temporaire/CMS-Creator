@@ -9,7 +9,7 @@ class LoginController extends BaseController
         $this->render(
             'login.php',
             [],
-            'Bonne Route'
+            'CMS-Creator - Login'
         );
     }
 }

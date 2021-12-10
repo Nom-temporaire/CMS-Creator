@@ -9,7 +9,7 @@ class ErrorController extends BaseController
         $this->render(
             '404.php',
             [],
-            'Mauvaise Route'
+            'John China'
         );
     }
 }

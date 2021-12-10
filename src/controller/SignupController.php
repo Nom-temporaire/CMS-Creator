@@ -9,7 +9,7 @@ class SignupController extends BaseController
         $this->render(
             'signup.php',
             [],
-            'Bonne Route'
+            'CMS-Creator - Signup'
         );
     }
 }

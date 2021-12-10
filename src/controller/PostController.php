@@ -26,7 +26,7 @@ class PostController extends BaseController
                 'id' => $this->params['id'],
                 'urlimage' => $this->urlimage,
             ],
-            'Bonne Route'
+            'CMS-Creator - Post'
         );
     }
 }

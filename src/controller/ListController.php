@@ -9,7 +9,7 @@ class ListController extends BaseController
         $this->render(
             'list.php',
             [],
-            'Bonne Route'
+            'CMS-Creator'
         );
     }
 }
