@@ -10,7 +10,7 @@ if (empty($_SESSION)) {
 ?>
 
 <!doctype html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -19,6 +19,7 @@ if (empty($_SESSION)) {
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="/public/favicon/favicon.jpg" />
 </head>
 
 <body class="h-screen w-screen overflow-x-hidden bg-gray-800">
@@ -29,9 +30,11 @@ if (empty($_SESSION)) {
                     <a class="text-xl font-bold text-gray-200 md:text-2xl">Bonjour <?= $_SESSION['username'] ?></a>
                 </div>
                 <div>
-                    <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
+                    <button type="button"
+                        class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                            <path
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
                             </path>
                         </svg>
                     </button>
@@ -42,22 +45,22 @@ if (empty($_SESSION)) {
                 <?php
                 if ($_SESSION['role'] == 'admin') {
                 ?>
-                    <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
-                    <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
-                        Utilisateurs</a>
-                    <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
-                    <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
+                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
+                    Utilisateurs</a>
+                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
                 } elseif ($_SESSION['role'] == 'user') {
                 ?>
-                    <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
-                    <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
-                    <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
+                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
                 } else {
                 ?>
-                    <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
-                    <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Sign Up</a>
+                <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
+                <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Sign Up</a>
                 <?php
                 }
                 ?>
