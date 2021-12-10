@@ -70,20 +70,10 @@ if (empty($_SESSION)) {
     </div>
 </body>
 
-<<<<<<< HEAD
 </html>
 <?php
 // sinon afficher le contenu de $_SESSION['json']
-else :
-    header('Content-Type: application/json');
-    echo $_SESSION['json'];
-    unset($_SESSION['json']);
-
-endif;
 ?>
 <footer>
         <p class="margin: 12">A</p>
     </footer>
-=======
-</html>
->>>>>>> dededb82f0d6a7691571f906c5c018c5ac17b4ec
