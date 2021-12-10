@@ -69,7 +69,6 @@ if (empty($_SESSION['json'])) :
 
 
         <div class="container flex m-auto">
-            <?= $content; ?>
         </div>
     </header>
 
