@@ -19,8 +19,7 @@ $comments = $comment->getComments($id);
 <div class="mx-auto mt-20 flex flex-col text-xl w-11/12">
     <div>
         <h1 class="font-bold my-4 text-2xl"><?= $result->getTitle() ?></h1>
-        // on rajoute l'image
-        <img class="w-full" src="<?= $urlimage ?>" alt="<?= $result->getTitle() ?>">
+        <img class="w-1/3" src="<?= $urlimage ?>" alt="<?= $result->getTitle() ?>">
         <p><?= $result->getContent() ?></p>
         <h4>Fait par <?= $result->getUsername() ?> - le <?= $result->getDate() ?></h4>
         <? if (($result->getIdUser()) == $_SESSION["idUser"] || $_SESSION['role'] == 'admin') { ?>
