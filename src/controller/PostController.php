@@ -12,7 +12,14 @@ class PostController extends BaseController
         $this->image = new ImageManager(PDOFactory::getMysqlConnection());
 
         $this->chemin = $this->image->getChemin($this->params['id'])[0];
-        $this->urlimage = '/public/images/' . $this->chemin;
+
+        if ($this->chemin == null) {
+            $this->urlimage = null;
+        }
+        else{
+            $this->urlimage = '/public/images/' . $this->chemin;
+        }
+        
         $this->render(
             'post.php',
             [
