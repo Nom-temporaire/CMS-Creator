@@ -21,17 +21,19 @@ if (empty($_SESSION['json'])) :
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-    <body class="h-screen w-screen overflow-x-hidden">
-        <header class="px-6 py-4">
+<body class="h-screen w-screen overflow-x-hidden bg-gray-800">
+    <header class="px-6 py-4 bg-gray-900">
         <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
             <div class="flex items-center justify-between">
                 <div>
-                    <a class="text-xl font-bold text-gray-800 md:text-2xl">Bonjour <?=$_SESSION['username']?></a>
+                    <a class="text-xl font-bold text-gray-200 md:text-2xl">Bonjour <?=$_SESSION['username']?></a>
                 </div>
                 <div>
-                    <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
+                    <button type="button"
+                        class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                            <path
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
                             </path>
                         </svg>
                     </button>
@@ -39,11 +41,12 @@ if (empty($_SESSION['json'])) :
             </div>
             <div class="flex-col hidden md:flex md:flex-row md:-mx-4">
                 <a href="/" class="mx-5 p-2 h-1/2 bg-indigo-900 text-white rounded-lg">Home</a>
-            <?php
+                <?php
                 if ($_SESSION['role'] == 'admin') {
                 ?>
                 <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
-                <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des Utilisateurs</a>
+                <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
+                    Utilisateurs</a>
                 <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
                 <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
@@ -64,12 +67,12 @@ if (empty($_SESSION['json'])) :
                 ?>
             </div>
         </div>
-        </header>
+    </header>
 
 
 
-        <div class="container flex m-auto">
-        </div>
+    <div class="container flex m-auto">
+    </div>
     </header>
 
 
