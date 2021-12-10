@@ -104,6 +104,22 @@ class ImageManager extends BaseManager
         return $results;
     }
 
+    public function getCheminsFromPost($idPost)
+    {
+        $results = [];
+
+        $select = "SELECT chemin FROM images WHERE idPost = :idPost";
+        $this->pdoStatement = $this->pdo->prepare($select);
+        $this->pdoStatement->bindValue(':idPost', $idPost);
+        $this->pdoStatement->execute();
+
+        while($image = $this->pdoStatement->fetchObject('App\Entity\Image')){
+            $results[] = $image;
+        }
+
+        return $results;
+    }
+
     public function deleteImagesFromUser($idUser)
     {
         $delete = "DELETE FROM images WHERE idUser = :idUser";
