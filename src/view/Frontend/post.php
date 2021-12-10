@@ -45,27 +45,21 @@ $comments = $comment->getComments($id);
                 class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg float-right">SUPPRIMER</a>
             <?php } ?>
         </div>
-        <p class="break-all"><?= $comment->getContent() ?></p>
-        <? if (($comment->getIdUser()) == $_SESSION["idUser"] || $_SESSION['role'] == 'admin') { ?>
-        <a href="/deletecomment/<?= $comment->getId() ?>"
-            class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
-        <?php } ?>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
-</div>
-<?php if ($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') { ?>
-<div class="w-full mt-20">
-    <form action="/createcomment" method="post">
-        <div class="mb-6">
-            <label for="commentcontent" class="text-sm font-medium text-gray-200 block mb-2">Commenter</label>
-            <textarea id="commentcontent" name="commentcontent"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Votre commentaire..." required=""></textarea>
-        </div>
-        <input type="hidden" name="postid" value="<?= $id ?>">
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center float-right">Poster</button>
-    </form>
-</div>
-<?php } ?>
+    <?php if ($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') { ?>
+    <div class="w-full mt-20">
+        <form action="/createcomment" method="post">
+            <div class="mb-6">
+                <label for="commentcontent" class="text-sm font-medium text-gray-200 block mb-2">Commenter</label>
+                <textarea id="commentcontent" name="commentcontent"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Votre commentaire..." required=""></textarea>
+            </div>
+            <input type="hidden" name="postid" value="<?= $id ?>">
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center float-right">Poster</button>
+        </form>
+    </div>
+    <?php } ?>
 </div>
