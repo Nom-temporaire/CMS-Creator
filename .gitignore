@@ -1,2 +1,8 @@
 ./src/vendor/
-database
+database/aria_log_control
+database/aria_log.00000001
+database/ddl_recovery-backup.log
+database/ddl_recovery.log
+.MAI
+.mai
+database/ib_logfile0
