@@ -4,7 +4,6 @@ use App\Manager\PostManager;
 use App\Manager\CommentManager;
 use App\Fram\Factories\PDOFactory;
 
-
 if ($id == null) {
     header('Location: /');
 }
@@ -15,17 +14,16 @@ $result = $post->getPost($id);
 $comment = new CommentManager(PDOFactory::getMysqlConnection());
 $comments = $comment->getComments($id);
 
-
 ?>
 
 <div class="mx-auto mt-20 flex flex-col text-xl w-11/12">
     <div>
         <h1 class="font-bold my-4 text-2xl"><?= $result->getTitle() ?></h1>
-        <!-- On appelle la fonction getImage qui return le chemin de l'image -->
-        <img src="" class="w-1/2">
         <p><?= $result->getContent() ?></p>
-        <h4>Fait par user - le <?= $result->getDate() ?></h4>
-        <a href="/deletepost/<?= $result->getIdPost() ?>" class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
+        <h4>Fait par <?= $result->getUsername() ?> - le <?= $result->getDate() ?></h4>
+        <? if (($result->getIdUser()) == $_SESSION["idUser"] || $_SESSION['role'] == 'admin') { ?>
+            <a href="/deletepost/<?= $result->getIdPost() ?>" class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
+        <? } ?>
     </div>
     <?php if ($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') { ?>
         <div class="w-full mt-20">
@@ -47,7 +45,9 @@ $comments = $comment->getComments($id);
                     <p class="ml-4">Le <?= $comment->getDate() ?></p>
                 </div>
                 <p class="break-all"><?= $comment->getContent() ?></p>
-                <a href="/deletecomment/<?= $comment->getId() ?>" class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
+                <? if (($comment->getIdUser()) == $_SESSION["idUser"] || $_SESSION['role'] == 'admin') { ?>
+                    <a href="/deletecomment/<?= $comment->getId() ?>" class="flex-no-shrink bg-red-500 px-5 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-lg">SUPPRIMER</a>
+                <?php } ?>
             </div>
         <?php endforeach; ?>
     </div>

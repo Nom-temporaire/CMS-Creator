@@ -1,13 +1,33 @@
-<div class="w-4/12 mx-auto mt-20 h-2/6 p-8 bg-gray-300 rounded-lg flex flex-col items-center justify-center">
-    <h1>Sign-up</h1>
-    <form action="create" method="post" class="m-auto flex flex-col">
-        <label for="username" class="m-2">Username</label>
-        <input type="text" name="username" id="username" class="m-2" required>
-        <label for="password" class="m-2">Password</label>
-        <input type="password" name="password" id="password" class="m-2" required>
-        <label for="email" class="m-2">Email</label>
-        <input type="text" name="email" id="email" class="m-2" pattern="^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-z]{2,3}"
-            required>
-        <input type="submit" value="Sign-up" class="m-2">
-    </form>
-</div>
+<form action="create" method="post" class="w-4/12 mx-auto mt-20 h-2/6 p-8 bg-gray-900 rounded-lg flex flex-col items-left justify-left">
+    <div class="md:flex md:items-left mb-6">
+        <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+            Username
+            </label>
+        </div>
+        <div class="md:w-2/3">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" name="username" type="text" required>
+        </div>
+    </div>
+    <div class=" md:flex md:items-left mb-6">
+        <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-password">
+            Password
+            </label>
+        </div>
+        <div class="md:w-2/3">
+        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" name="password" type="password" placeholder="************" required>
+        </div>
+  </div>
+  <div class="md:flex md:items-left mb-6">
+        <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+            Mail
+            </label>
+        </div>
+        <div class="md:w-2/3">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" name="email" type="text" pattern="^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-z]{2,3}" required>
+        </div>
+    </div>
+        <input class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" value="Sign-up">
+</form>
