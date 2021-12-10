@@ -7,7 +7,6 @@
     <route path="list" action="list" controller="ListController"/>
     <route path="post" action="post" controller="PostController" params="id"/>
     <route path="/" action="list" controller="ListController"/>
-    <route path="post" action="post" controller="PostController" />
     <route path="create" action="create" controller="CreateController"/>
     <route path="createpost" action="createpost" controller="CreatePostController"/>
     <route path="deletepost" action="deletepost" controller="DeletePostController" params="id"/>
