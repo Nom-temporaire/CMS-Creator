@@ -17,6 +17,7 @@ class User
         return $this->idUser;
     }
 
+
     public function setId(int $id): void
     {
         $this->id = $id;
