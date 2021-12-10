@@ -11,7 +11,7 @@ class PostManager extends BaseManager
         $this->post = new Post();
         $this->post->setTitle($title);
         $this->post->setContent($content);
-        $this->post->setAuthor($authorID);
+        $this->post->setIdUser($authorID);
         //$post->setCreatedAt(new \DateTime());
         //$post->setUpdatedAt(new \DateTime());
 
