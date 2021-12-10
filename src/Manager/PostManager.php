@@ -15,12 +15,12 @@ class PostManager extends BaseManager
         //$post->setCreatedAt(new \DateTime());
         //$post->setUpdatedAt(new \DateTime());
 
-        $insert = "INSERT INTO post (title, content, IDauthor) VALUES (:title, :content, :IDauthor)";
+        $insert = "INSERT INTO post (title, content, idUser) VALUES (:title, :content, :idUser)";
         $request = $this->pdo->prepare($insert);
         $data = [
             'title' => $title,
             'content' => $content,
-            'IDauthor' => $authorID
+            'idUser' => $authorID
         ];
 
         $request->execute($data);
