@@ -6,7 +6,7 @@ if (empty($_SESSION)) {
     $_SESSION['role'] = 'visiteur';
     // header('Location: index');
 }
-if (empty($_SESSION['json'])) :
+
 ?>
 
 <!doctype html>
@@ -26,14 +26,12 @@ if (empty($_SESSION['json'])) :
         <div class="container flex flex-col mx-auto md:flex-row md:items-center md:justify-between">
             <div class="flex items-center justify-between">
                 <div>
-                    <a class="text-xl font-bold text-gray-200 md:text-2xl">Bonjour <?=$_SESSION['username']?></a>
+                    <a class="text-xl font-bold text-gray-200 md:text-2xl">Bonjour <?= $_SESSION['username'] ?></a>
                 </div>
                 <div>
-                    <button type="button"
-                        class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
+                    <button type="button" class="block text-gray-800 hover:text-gray-600 focus:text-gray-600 focus:outline-none md:hidden">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                            <path
-                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
                             </path>
                         </svg>
                     </button>
@@ -44,24 +42,22 @@ if (empty($_SESSION['json'])) :
                 <?php
                 if ($_SESSION['role'] == 'admin') {
                 ?>
-                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
-                <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
-                    Utilisateurs</a>
-                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
-                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
+                    <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                    <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
+                        Utilisateurs</a>
+                    <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                    <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
-                }
-                elseif ($_SESSION['role'] == 'user') {
+                } elseif ($_SESSION['role'] == 'user') {
                 ?>
-                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
-                <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
-                <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
+                    <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                    <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
+                    <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
-                }
-                else {
+                } else {
                 ?>
-                <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
-                <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Sign Up</a>
+                    <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
+                    <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Sign Up</a>
                 <?php
                 }
                 ?>
@@ -75,12 +71,3 @@ if (empty($_SESSION['json'])) :
 </body>
 
 </html>
-<?php
-// sinon afficher le contenu de $_SESSION['json']
-else :
-    header('Content-Type: application/json');
-    echo $_SESSION['json'];
-    unset($_SESSION['json']);
-
-endif;
-?>

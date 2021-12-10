@@ -15,8 +15,7 @@ class ApiManager extends BaseManager
 
     public function getUser(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('SELECT * FROM users WHERE id = :id');
+        $request = $this->pdo->prepare('SELECT * FROM users WHERE idUser = :id');
 
         $request->execute([
             'id' => $id
@@ -31,11 +30,10 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
     public function getUsers()
     {
-        $_SESSION['json'] = "true";
         $request = $this->pdo->prepare('SELECT * FROM users');
 
         $request->execute();
@@ -45,13 +43,12 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
 
     public function getCommentaire(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('SELECT * FROM commentaires WHERE id = :id');
+        $request = $this->pdo->prepare('SELECT * FROM commentaires WHERE idComment = :id');
 
         $request->execute([
             'id' => $id
@@ -66,12 +63,11 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
 
     public function getCommentaires()
     {
-        $_SESSION['json'] = "true";
         $request = $this->pdo->prepare('SELECT * FROM commentaires');
         $request->execute();
         // on fetch assoc
@@ -80,12 +76,11 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
     public function getPost(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('SELECT * FROM post WHERE id = :id');
+        $request = $this->pdo->prepare('SELECT * FROM post WHERE idPost = :id');
 
         $request->execute([
             'id' => $id
@@ -100,11 +95,10 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
     public function getPosts()
     {
-        $_SESSION['json'] = "true";
         $request = $this->pdo->prepare('SELECT * FROM post');
         $request->execute();
         // on fetch assoc
@@ -113,14 +107,13 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
 
     // On fait les méthodes pour les DELETE
     public function deleteUser(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('DELETE FROM users WHERE id = :id');
+        $request = $this->pdo->prepare('DELETE FROM users WHERE idUser = :id');
 
         $request->execute([
             'id' => $id
@@ -135,12 +128,11 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
     public function deleteCommentaire(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('DELETE FROM commentaires WHERE id = :id');
+        $request = $this->pdo->prepare('DELETE FROM commentaires WHERE idComment = :id');
 
         $request->execute([
             'id' => $id
@@ -155,12 +147,11 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
     public function deletePost(int $id)
     {
-        $_SESSION['json'] = "true";
-        $request = $this->pdo->prepare('DELETE FROM post WHERE id = :id');
+        $request = $this->pdo->prepare('DELETE FROM post WHERE idPost = :id');
 
         $request->execute([
             'id' => $id
@@ -175,6 +166,6 @@ class ApiManager extends BaseManager
         $json = json_encode($log);
         //retourne le JSON
 
-        return $json;
+        echo $json;
     }
 }
