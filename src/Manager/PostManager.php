@@ -28,7 +28,7 @@ class PostManager extends BaseManager
 
     public function getPost($id)
     {
-        $select = "SELECT * FROM post WHERE idPost = :idPost";
+        $select = "SELECT idPost, post.idUser, title, post.date, content, username FROM users JOIN post ON users.idUser = post.idUser WHERE post.idPost = :idPost";
         $this->pdoStatement = $this->pdo->prepare($select);
         $this->pdoStatement->bindValue('idPost', $id, \PDO::PARAM_INT);
         $this->pdoStatement->execute();

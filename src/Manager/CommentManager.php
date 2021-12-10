@@ -61,4 +61,12 @@ class CommentManager extends BaseManager{
 
         return $this->pdoStatement->execute();
     }
+
+    public function deleteComments($idPost){
+        $delete = "DELETE FROM commentaires WHERE idPost = :id";
+        $this->pdoStatement = $this->pdo->prepare($delete);
+        $this->pdoStatement->bindValue('id', $idPost, \PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
+    }
 }

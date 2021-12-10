@@ -6,8 +6,8 @@ class Post{
     private $idPost;
     private $title;
     private $content;
-    private $author;
-    private $authorUserName;
+    private $idUser;
+    private $username;
     private $date;
 
     public function getIdPost(): ?int
@@ -39,26 +39,26 @@ class Post{
         return $this;
     }
 
-    public function getAuthor(): ?int
+    public function getIdUser(): ?int
     {
-        return $this->author;
+        return $this->idUser;
     }
 
-    public function setAuthor(int $author): self
+    public function setIdUser(int $IdUser): self
     {
-        $this->author = $author;
+        $this->IdUser = $IdUser;
 
         return $this;
     }
 
-    public function getAuthorUserName(): ?string
+    public function getUserName(): ?string
     {
-        return $this->authorUserName;
+        return $this->username;
     }
 
-    public function setAuthorUserName(string $authorUserName): self
+    public function setUserName(string $username): self
     {
-        $this->authorUserName = $authorUserName;
+        $this->username = $username;
 
         return $this;
     }
