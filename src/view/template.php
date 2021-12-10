@@ -9,17 +9,17 @@ if (empty($_SESSION)) {
 if (empty($_SESSION['json'])) :
 ?>
 
-    <!doctype html>
-    <html>
+<!doctype html>
+<html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?= $title ?></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?= $title ?></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
 
     <body class="h-screen w-screen overflow-x-hidden">
         <header class="px-6 py-4">
@@ -71,9 +71,16 @@ if (empty($_SESSION['json'])) :
         <div class="container flex m-auto">
             <?= $content; ?>
         </div>
-    </body>
+    </header>
 
-    </html>
+
+
+    <div class="container flex m-auto">
+        <?= $content; ?>
+    </div>
+</body>
+
+</html>
 <?php
 // sinon afficher le contenu de $_SESSION['json']
 else :
