@@ -46,6 +46,15 @@ class PostManager extends BaseManager
         return $this->pdoStatement->execute();
     }
 
+    public function deletePostsFromUser($idUser)
+    {
+        $delete = "DELETE FROM post WHERE idUser = :idUser";
+        $this->pdoStatement = $this->pdo->prepare($delete);
+        $this->pdoStatement->bindValue('idUser', $idUser, \PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
+    }
+
     public function getAllPosts()
     {
 

@@ -61,7 +61,7 @@ if (empty($_SESSION['json'])) :
                 else {
                 ?>
                 <a href="/signin" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Log In</a>
-                <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-900 text-white rounded-lg">Sign Up</a>
+                <a href="/signup" class="mx-5 p-2 h-1/2 bg-gray-800 text-white rounded-lg">Sign Up</a>
                 <?php
                 }
                 ?>
@@ -69,15 +69,7 @@ if (empty($_SESSION['json'])) :
         </div>
     </header>
 
-
-
-    <div class="container flex m-auto">
-    </div>
-    </header>
-
-
-
-    <div class="container flex m-auto">
+    <div class="container flex m-auto text-gray-200">
         <?= $content; ?>
     </div>
 </body>
