@@ -45,7 +45,7 @@ if (empty($_SESSION)) {
                 <?php
                 if ($_SESSION['role'] == 'admin') {
                 ?>
-                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/postinput" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
                 <a href="/userlist" class="mx-5 p-2 h-1/2 bg-indigo-700 text-white rounded-lg">Liste des
                     Utilisateurs</a>
                 <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
@@ -53,7 +53,7 @@ if (empty($_SESSION)) {
                 <?php
                 } elseif ($_SESSION['role'] == 'user') {
                 ?>
-                <a href="#" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
+                <a href="/postinput" class="mx-5 p-2 h-1/2 bg-indigo-800 text-white rounded-lg">Créer un post</a>
                 <a href="/account" class="mx-5 p-2 h-1/2 bg-indigo-600 text-white rounded-lg">Mon compte</a>
                 <a href="/delog" class="mx-5 p-2 h-1/2 bg-indigo-500 text-white rounded-lg">Log Out</a>
                 <?php
@@ -74,3 +74,9 @@ if (empty($_SESSION)) {
 </body>
 
 </html>
+<?php
+// sinon afficher le contenu de $_SESSION['json']
+?>
+<footer>
+    <p class="margin: 12">A</p>
+</footer>
