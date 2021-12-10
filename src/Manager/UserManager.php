@@ -52,7 +52,7 @@ class UserManager extends BaseManager
             $request->execute();
             $log = $request->fetch();
             if (empty($log)) {
-                $update = "UPDATE users SET username=:username WHERE id=:id";
+                $update = "UPDATE users SET username=:username WHERE idUser=:id";
                 $req = $this->pdo->prepare($update);
                 $data = ['username' => $this->user->getUsername(), 'id' => intval($id)];
                 $_SESSION['username'] = $this->user->getUsername();
@@ -64,21 +64,21 @@ class UserManager extends BaseManager
             }
         }
         if (!empty($this->user->getMail())) {
-            $update = "UPDATE users SET mail=:mail WHERE id=:id";
+            $update = "UPDATE users SET mail=:mail WHERE idUser=:id";
             $req = $this->pdo->prepare($update);
             $data = ['mail' => $this->user->getMail(), 'id' => intval($id)];
             $req->execute($data);
             $log = $req->fetch();
         }
         if (!empty($this->user->getPassword())) {
-            $update = "UPDATE users SET password=:password WHERE id=:id";
+            $update = "UPDATE users SET password=:password WHERE idUser=:id";
             $req = $this->pdo->prepare($update);
             $data = ['password' => password_hash($this->user->getPassword(), PASSWORD_DEFAULT), 'id' => intval($id)];
             $req->execute($data);
             $log = $req->fetch();
         }
 
-        $update = "UPDATE users SET isAdmin=:isAdmin WHERE id=:id";
+        $update = "UPDATE users SET isAdmin=:isAdmin WHERE idUser=:id";
 
         $req = $this->pdo->prepare($update);
         $data = ['isAdmin' => intval($this->user->getIsAdmin()), 'id' => intval($id)];
@@ -113,9 +113,8 @@ class UserManager extends BaseManager
 
     public function DeleteUser($idUser, $idUserDel)
     {
-        if ($idUser != $idUserDel)
-        {
-            $delete = "DELETE FROM users WHERE id = :idUserDel LIMIT 1";
+        if ($idUser != $idUserDel) {
+            $delete = "DELETE FROM users WHERE idUser = :idUserDel LIMIT 1";
             $req = $this->pdo->prepare($delete);
             $req->bindValue(':idUserDel', $idUserDel);
             $req->execute();

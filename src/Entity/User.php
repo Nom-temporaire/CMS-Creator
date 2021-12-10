@@ -4,7 +4,7 @@ namespace App\Entity;
 
 class User
 {
-    private int $id;
+    private int $idUser;
     private string $username;
     private string $password;
     private string $mail;
@@ -14,7 +14,7 @@ class User
     // All setters and getters
     public function getId(): int
     {
-        return $this->id;
+        return $this->idUser;
     }
 
     public function setId(int $id): void
