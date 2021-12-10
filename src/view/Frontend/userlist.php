@@ -47,7 +47,11 @@ $result = $users->getAllUsers();
             <td class="px-4 py-3 text-xs" id=<?= $users->getId() ?>>
                 <form action="deleteuser" method="post" class="m-auto flex flex-col">
                     <input type="hidden" name="idUserDel" value="<?= $users->getId() ?>">
+                    <?php if ($_SESSION["idUser"] != $users->getId()) { ?>
                     <input class="px-0 py-1 font-semibold leading-tight text-red-400 bg-red-200 rounded-sm" type="submit" value="SUPPRIMER">
+                    <?php ;} else { ?>
+                    <span class="px-0 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm text-center">C'est vous</span>
+                    <?php ;} ?>
                 </form>
             </td>
           </tr>
